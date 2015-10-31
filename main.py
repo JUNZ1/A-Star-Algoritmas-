@@ -15,8 +15,13 @@ def nothing(x):
 cv2.namedWindow('image')
 cv2.createTrackbar('sayi1', 'image',1,255,nothing)
 
-#baslangic 30,20
+baslangicy=20
+baslangicx=30
 
+
+kordinatlar = np.empty( 1, dtype=data_type_kordinatlar)
+
+mesafeler=np.empty( 12, dtype=data_type_mesafeler)
 
 if __name__ == "__main__":
     print "Merhaba"
@@ -25,16 +30,13 @@ if __name__ == "__main__":
 
     imgray = cv2.cvtColor(maze,cv2.COLOR_BGR2GRAY)
 
-    zeros=np.zeros((maze.shape[0],maze.shape[1]),np.uint8)
+    binary_image=np.zeros((maze.shape[0],maze.shape[1]),np.uint8)
 
-    cv2.threshold(imgray,rakam,255,cv2.THRESH_BINARY,zeros)
+    cv2.threshold(imgray,rakam,255,cv2.THRESH_BINARY,binary_image)
 
-    zeros[20,30]=0
-
-
-
+    binary_image[20,30]=0
     while(True):
-        cv2.imshow('image',zeros)
+        cv2.imshow('image',binary_image)
 
         k = cv2.waitKey(33)
         if k==1048689:    # 'q' tusu cikmak icin
