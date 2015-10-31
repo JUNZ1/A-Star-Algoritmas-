@@ -17,12 +17,10 @@ data_type_mesafeler = np.dtype([('mes_son', np.float),('mes_baslangic', np.float
 
 kordinatlar = np.empty( 5, dtype=data_type_kordinatlar)
 
-mesafeler=np.empty( 5, dtype=data_type_mesafeler)
+mesafeler=np.empty( 12, dtype=data_type_mesafeler)
 
 kordinatlar[:]=474,360
 
-x=3
-y=5
 
 
 def nokta_ekle(kordinatlar,x,y):
@@ -42,6 +40,3 @@ def mesafe_yaz(mesafe,kordinat):
         mesafe[a]['mes_son']= math.sqrt(math.pow((kordinat[a]['x']-bitisx), 2)+math.pow((kordinat[a]['y']-bitisy), 2))
         mesafe[a]['mes_baslangic']= math.sqrt(math.pow((kordinat[a]['x']-baslangicx), 2)+math.pow((kordinat[a]['y']-baslangicy), 2))
     return mesafe
-
-
-
