@@ -12,7 +12,7 @@ baslangicx=30
 
 data_type_kordinatlar = np.dtype([('x', np.float64),('y', np.float64)])
 
-data_type_mesafeler = np.dtype([('mes_son', np.float),('mes_baslangic', np.float)])
+data_type_mesafeler = np.dtype([('mes_son', np.float),('mes_baslangic', np.float),('toplam', np.float)])
 
 
 kordinatlar = np.empty( 5, dtype=data_type_kordinatlar)
@@ -39,4 +39,5 @@ def mesafe_yaz(mesafe,kordinat):
     for a in range(0,mesafe.shape[0]):
         mesafe[a]['mes_son']= math.sqrt(math.pow((kordinat[a]['x']-bitisx), 2)+math.pow((kordinat[a]['y']-bitisy), 2))
         mesafe[a]['mes_baslangic']= math.sqrt(math.pow((kordinat[a]['x']-baslangicx), 2)+math.pow((kordinat[a]['y']-baslangicy), 2))
+        mesafe[a]['toplam']=mesafe[a]['mes_son']+mesafe[a]['mes_baslangic']
     return mesafe
