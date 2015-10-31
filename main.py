@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
-from cells import *
+from numpy_dtype import *
 
 global rakam
 rakam=0
@@ -31,6 +30,7 @@ if __name__ == "__main__":
     cv2.threshold(imgray,rakam,255,cv2.THRESH_BINARY,zeros)
 
     zeros[20,30]=0
+
 
 
     while(True):
