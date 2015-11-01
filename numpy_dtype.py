@@ -54,7 +54,7 @@ def nokta_ekle3(kordinatlar,sayilar):
 
 
 def path_eleme(kordinatlar,path):
-    for a in range(0,8):
+    for a in range(0,kordinatlar.shape[0]):
             if kordinatlar[a] in path:
                 kordinatlar[a]=-10,-10
 

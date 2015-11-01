@@ -25,6 +25,9 @@ mesafeler=np.empty( 12, dtype=data_type_mesafeler)
 
 path = np.empty( 1, dtype=data_type_kordinatlar)
 
+tum_kordinatlar = np.empty( 1, dtype=data_type_kordinatlar)
+tum_kordinatlar[0]=baslangicx,baslangicy
+
 if __name__ == "__main__":
     print "Merhaba"
     maze=cv2.imread('maze.png')
@@ -35,23 +38,42 @@ if __name__ == "__main__":
     binary_image=np.zeros((maze.shape[0],maze.shape[1]),np.uint8)
 
     cv2.threshold(imgray,rakam,255,cv2.THRESH_BINARY,binary_image)
-
+    demo=binary_image.copy()
     binary_image[20,30]=0
     path['x']=baslangicx
     path['y']=baslangicy
 
 
-    while(True):
-        cv2.imshow('image',binary_image)
+    while(1):
+        cv2.imshow('image',demo)
         k = cv2.waitKey(33)
         if k==1048689:    # 'q' tusu cikmak icin
             break
 
         kordinatlar= komsular(path[path.shape[0]-1])
+
         kordinatlar=path_eleme(kordinatlar,path)
-        mesafeler=mesafe_yaz(mesafeler,kordinatlar)
+
+        kordinatlar=pixel_eleme(kordinatlar,binary_image)
+
+
+        for a in range(0,kordinatlar.shape[0]):
+            tum_kordinatlar=nokta_ekle3(tum_kordinatlar,kordinatlar[a])
+
+        tum_kordinatlar=path_eleme(tum_kordinatlar,path)
+
+
+
+        mesafeler=mesafe_yaz(mesafeler,tum_kordinatlar)
+
+
 
         index= np.where((mesafeler[:]['toplam']==mesafeler[:]['toplam'].min())==True)
-        path=nokta_ekle3(path,kordinatlar[index[0][0]])
 
-        binary_image[kordinatlar[index[0][0]]['y'],kordinatlar[index[0][0]]['x']]=0
+
+
+        path=nokta_ekle3(path,tum_kordinatlar[index[0][0]])
+
+
+
+        demo[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=0
