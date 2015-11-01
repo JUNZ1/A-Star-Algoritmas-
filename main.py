@@ -12,11 +12,11 @@ def nothing(x):
     print "rakam===>",rakam
     pass
 
-cv2.namedWindow('image')
+cv2.namedWindow('image',cv2.WINDOW_NORMAL)
 cv2.createTrackbar('sayi1', 'image',1,255,nothing)
 
-baslangicy=5
-baslangicx=3
+baslangicy=2
+baslangicx=2
 
 
 kordinatlar = np.empty( 1, dtype=data_type_kordinatlar)
@@ -31,7 +31,7 @@ tum_kordinatlar[0]=baslangicx,baslangicy
 if __name__ == "__main__":
     print "Merhaba"
     maze=cv2.imread('maze.png')
-    maze=cv2.resize(maze,None,fx=0.1, fy=0.1, interpolation = cv2.INTER_CUBIC)
+    maze=cv2.resize(maze,None,fx=0.05, fy=0.05, interpolation = cv2.INTER_CUBIC)
 
     imgray = cv2.cvtColor(maze,cv2.COLOR_BGR2GRAY)
 
