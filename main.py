@@ -3,7 +3,7 @@
 import cv2
 import numpy as np
 from numpy_dtype import *
-
+from matplotlib import pyplot as plt
 global rakam
 rakam=0
 def nothing(x):
@@ -15,8 +15,8 @@ def nothing(x):
 cv2.namedWindow('image')
 cv2.createTrackbar('sayi1', 'image',1,255,nothing)
 
-baslangicy=20
-baslangicx=30
+baslangicy=5
+baslangicx=3
 
 
 kordinatlar = np.empty( 1, dtype=data_type_kordinatlar)
@@ -31,7 +31,7 @@ tum_kordinatlar[0]=baslangicx,baslangicy
 if __name__ == "__main__":
     print "Merhaba"
     maze=cv2.imread('maze.png')
-    maze=cv2.resize(maze,None,fx=0.5, fy=0.5, interpolation = cv2.INTER_CUBIC)
+    maze=cv2.resize(maze,None,fx=0.1, fy=0.1, interpolation = cv2.INTER_CUBIC)
 
     imgray = cv2.cvtColor(maze,cv2.COLOR_BGR2GRAY)
 
@@ -45,7 +45,8 @@ if __name__ == "__main__":
 
 
     while(1):
-        cv2.imshow('image',demo)
+
+        cv2.imshow('image',binary_image)
         k = cv2.waitKey(33)
         if k==1048689:    # 'q' tusu cikmak icin
             break
@@ -76,4 +77,4 @@ if __name__ == "__main__":
 
 
 
-        demo[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=0
+        binary_image[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=0
