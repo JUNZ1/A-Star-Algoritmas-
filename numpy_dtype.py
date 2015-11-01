@@ -10,7 +10,7 @@ baslangicy=20
 baslangicx=30
 
 
-data_type_kordinatlar = np.dtype([('x', np.float64),('y', np.float64)])
+data_type_kordinatlar = np.dtype([('x', np.int),('y', np.int)])
 
 data_type_mesafeler = np.dtype([('mes_son', np.float),('mes_baslangic', np.float),('toplam', np.float)])
 
@@ -40,6 +40,18 @@ def nokta_ekle2(kordinatlar,sayilar):
     kordinatlar[kordinatlar.shape[0]-1]['x']=x
     kordinatlar[kordinatlar.shape[0]-1]['y']=y
     return kordinatlar
+
+
+def nokta_ekle3(kordinatlar,sayilar):
+    x=sayilar['x']
+    y=sayilar['y']
+    array=kordinatlar.copy()
+    kordinatlar = np.empty( kordinatlar.shape[0]+1, dtype=array.dtype)
+    kordinatlar[0:kordinatlar.shape[0]-1]=array.copy()
+    kordinatlar[kordinatlar.shape[0]-1]['x']=x
+    kordinatlar[kordinatlar.shape[0]-1]['y']=y
+    return kordinatlar
+
 
 def komsular(a):
     x=a[0]
@@ -79,5 +91,3 @@ def mesafe_yaz(mesafe,kordinat):
         mesafe[a]['mes_baslangic']= math.sqrt(math.pow((kordinat[a]['x']-baslangicx), 2)+math.pow((kordinat[a]['y']-baslangicy), 2))
         mesafe[a]['toplam']=mesafe[a]['mes_son']+mesafe[a]['mes_baslangic']
     return mesafe
-
-
