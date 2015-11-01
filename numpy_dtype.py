@@ -61,6 +61,13 @@ def path_eleme(kordinatlar,path):
     kordinatlar=kordinatlar[ np.logical_and(kordinatlar[:]['x']>=0,kordinatlar[:]['y']>=0)]
     return kordinatlar
 
+def pixel_eleme(kordinatlar,resim):
+    print kordinatlar.shape[0]
+    for a in range(0,kordinatlar.shape[0]):
+        if resim[kordinatlar[a]['y'],kordinatlar[a]['x']]==0:
+            kordinatlar[a]=-10,-10
+    kordinatlar=kordinatlar[ np.logical_and(kordinatlar[:]['x']>=0,kordinatlar[:]['y']>=0)]
+    return kordinatlar
 
 def komsular(a):
     x=a[0]
