@@ -53,6 +53,15 @@ def nokta_ekle3(kordinatlar,sayilar):
     return kordinatlar
 
 
+def path_eleme(kordinatlar,path):
+    for a in range(0,8):
+            if kordinatlar[a] in path:
+                kordinatlar[a]=-10,-10
+
+    kordinatlar=kordinatlar[ np.logical_and(kordinatlar[:]['x']>=0,kordinatlar[:]['y']>=0)]
+    return kordinatlar
+
+
 def komsular(a):
     x=a[0]
     y=a[1]

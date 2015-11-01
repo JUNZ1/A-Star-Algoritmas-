@@ -48,6 +48,7 @@ if __name__ == "__main__":
             break
 
         kordinatlar= komsular(path[path.shape[0]-1])
+        kordinatlar=path_eleme(kordinatlar,path)
         mesafeler=mesafe_yaz(mesafeler,kordinatlar)
 
         index= np.where((mesafeler[:]['toplam']==mesafeler[:]['toplam'].min())==True)
