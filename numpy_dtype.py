@@ -3,8 +3,8 @@ import numpy as np
 import math
 __author__ = 'junzi'
 
-bitisx=35
-bitisy=50
+bitisx=50
+bitisy=35
 
 baslangicy=2
 baslangicx=2

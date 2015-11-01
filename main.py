@@ -43,10 +43,12 @@ if __name__ == "__main__":
     path['x']=baslangicx
     path['y']=baslangicy
 
+    mesafe=100
 
-    while(1):
 
-        cv2.imshow('image',binary_image)
+    while(mesafe>2):
+
+        cv2.imshow('image',demo)
         k = cv2.waitKey(33)
         if k==1048689:    # 'q' tusu cikmak icin
             break
@@ -75,6 +77,8 @@ if __name__ == "__main__":
 
         path=nokta_ekle3(path,tum_kordinatlar[index[0][0]])
 
+        print tum_kordinatlar[index[0][0]]
 
+        mesafe= mesafeler[:]['mes_son'].min()
 
-        binary_image[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=0
+        demo[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=0
