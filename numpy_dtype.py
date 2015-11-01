@@ -62,7 +62,6 @@ def path_eleme(kordinatlar,path):
     return kordinatlar
 
 def pixel_eleme(kordinatlar,resim):
-    print kordinatlar.shape[0]
     for a in range(0,kordinatlar.shape[0]):
         if resim[kordinatlar[a]['y'],kordinatlar[a]['x']]==0:
             kordinatlar[a]=-10,-10
