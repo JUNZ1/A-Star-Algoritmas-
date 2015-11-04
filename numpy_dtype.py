@@ -3,11 +3,11 @@ import numpy as np
 import math
 __author__ = 'junzi'
 
-bitisx=50
-bitisy=35
+bitisx=360
+bitisy=360
 
-baslangicy=2
-baslangicx=2
+baslangicy=20
+baslangicx=20
 
 
 data_type_kordinatlar = np.dtype([('x', np.int),('y', np.int)])

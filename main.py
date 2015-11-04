@@ -15,8 +15,8 @@ def nothing(x):
 cv2.namedWindow('image',cv2.WINDOW_NORMAL)
 cv2.createTrackbar('sayi1', 'image',1,255,nothing)
 
-baslangicy=2
-baslangicx=2
+baslangicy=20
+baslangicx=20
 
 
 kordinatlar = np.empty( 1, dtype=data_type_kordinatlar)
@@ -30,16 +30,16 @@ tum_kordinatlar[0]=baslangicx,baslangicy
 
 if __name__ == "__main__":
     print "Merhaba"
-    maze=cv2.imread('maze.png')
-    maze=cv2.resize(maze,None,fx=0.05, fy=0.05, interpolation = cv2.INTER_CUBIC)
+    maze=cv2.imread('path.png')
+    #maze=cv2.resize(maze,None,fx=0.05, fy=0.05, interpolation = cv2.INTER_CUBIC)
 
     imgray = cv2.cvtColor(maze,cv2.COLOR_BGR2GRAY)
 
     binary_image=np.zeros((maze.shape[0],maze.shape[1]),np.uint8)
 
-    cv2.threshold(imgray,rakam,255,cv2.THRESH_BINARY,binary_image)
     demo=binary_image.copy()
-    binary_image[20,30]=0
+    cv2.threshold(imgray,136,255,cv2.THRESH_BINARY_INV,binary_image)
+    binary_image[baslangicy,baslangicx]=0
     path['x']=baslangicx
     path['y']=baslangicy
 
@@ -81,4 +81,4 @@ if __name__ == "__main__":
 
         mesafe= mesafeler[:]['mes_son'].min()
 
-        demo[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=0
+        demo[tum_kordinatlar[index[0][0]]['y'],tum_kordinatlar[index[0][0]]['x']]=255
